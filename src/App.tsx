@@ -15,7 +15,7 @@ function App() {
                 <img src={logo} className="App-logo" alt="logo" />
                 <p>
                   Proyecto Admin OpenBootCamp !!!
-                 <FormLogin />
+                 {/*<FormLogin />*/}
                 </p>
                 </header>      
         </ChakraProvider>
