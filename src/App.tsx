@@ -1,27 +1,35 @@
-import logo from './logo.svg';
-import React from 'react';
-import './App.css';
 
-//import FormRegister from './shared/components/pure/forms/formRegister';
-import FormLogin from './shared/components/pure/forms/formLogin';
+import React from 'react';
+import Login from './pages/Login';
+import Register from './pages/Register'
+import NotFound from './pages/NotFound';
+import OfferTab from './pages/OfferTab';
+import NewOffer from './pages/NewOffer';
+import { BrowserRouter,
+  Route,
+  Routes } from 'react-router-dom';
+;
+import { ChakraProvider } from '@chakra-ui/react'
+
+
 
 
 function App() {
   return (
+ 
+    <ChakraProvider>
+
+    <BrowserRouter>
+      <Routes>
+        <Route path='/' element={<Login/>} />
+        <Route path='/register' element={<Register/>} />
+        <Route path='/fichaoferta' element={<OfferTab/>} />
+        <Route path='/nuevaoferta' element={<NewOffer/>} />
+        <Route path='*' element={<NotFound/>} />
+      </Routes>
     
-    <div className="App">
-
-            <header className="App-header">
-                <img src={logo} className="App-logo" alt="logo" />
-                <p>
-                  Proyecto Admin OpenBootCamp !!!
-                 {<FormLogin />}
-                </p>
-                </header>      
-
-    </div>    
-
-
+    </BrowserRouter>
+   </ChakraProvider>
   );
 }
 

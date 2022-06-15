@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const FormRegister = () => {
+const Register = () => {
 
     const initialData = [{user: "", name : "",email : "" ,password : ""}];
 
@@ -8,10 +8,10 @@ const FormRegister = () => {
 
     return (
         <div>
-
+            <h1> Register Form </h1>
             
         </div>
     );
 }
 
-export default FormRegister;
+export default Register;
