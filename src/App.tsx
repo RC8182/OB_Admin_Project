@@ -1,17 +1,16 @@
 
 import React from 'react';
-import Login from './pages/Login';
-import Register from './pages/Register'
-import NotFound from './pages/NotFound';
-import OfferTab from './pages/OfferTab';
-import NewOffer from './pages/NewOffer';
 import { BrowserRouter,
   Route,
   Routes } from 'react-router-dom';
-;
 import { ChakraProvider } from '@chakra-ui/react'
-
-
+import HomePage from './Pages/homePage';
+import LoginPage from './Pages/loginPage';
+import Register from './Pages/registerPage';
+import Dashboard from './Pages/dashboardPage';
+import OfferTab from './Pages/OfferTab';
+import NewOffer from './Pages/NewOffer';
+import NotFound from './Pages/NotFound';
 
 
 function App() {
@@ -19,17 +18,20 @@ function App() {
  
     <ChakraProvider>
 
-    <BrowserRouter>
-      <Routes>
-        <Route path='/' element={<Login/>} />
-        <Route path='/register' element={<Register/>} />
-        <Route path='/fichaoferta' element={<OfferTab/>} />
-        <Route path='/nuevaoferta' element={<NewOffer/>} />
-        <Route path='*' element={<NotFound/>} />
-      </Routes>
-    
-    </BrowserRouter>
-   </ChakraProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route path='/' element={<HomePage/>} />
+          <Route path='login' element={<LoginPage/>} />
+          <Route path='/register' element={<Register/>} />
+          <Route path='/dashboard' element={<Dashboard/>} />
+          <Route path='/fichaoferta' element={<OfferTab/>} />
+          <Route path='/nuevaoferta' element={<NewOffer/>} />
+          <Route path='*' element={<NotFound/>} />
+
+        </Routes>
+      
+      </BrowserRouter>
+    </ChakraProvider>
   );
 }
 
