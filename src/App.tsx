@@ -11,13 +11,17 @@ import Dashboard from './Pages/dashboardPage';
 import OfferTab from './Pages/OfferTab';
 import NewOffer from './Pages/NewOffer';
 import NotFound from './Pages/NotFound';
+import { UserProvider } from './Shared/Context/userContex';
 
 
 function App() {
+
+
+
   return (
  
     <ChakraProvider>
-
+      <UserProvider >
       <BrowserRouter>
         <Routes>
           <Route path='/' element={<HomePage/>} />
@@ -31,6 +35,7 @@ function App() {
         </Routes>
       
       </BrowserRouter>
+      </UserProvider>
     </ChakraProvider>
   );
 }

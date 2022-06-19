@@ -1,13 +1,17 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import { Input, Button,Box,Checkbox, FormLabel, VStack } from '@chakra-ui/react';
 import { Formik,  ErrorMessage, Field } from 'formik';
 import * as Yup from 'yup';
+import {  useNavigate } from 'react-router-dom';
+import UserContext from '../../Shared/Context/userContex';
+import Dashboard from '../dashboardPage';
+import LoginPage from '../loginPage';
 
 
 
 const LoginForm = () => {
 
-
+        const credential = useContext(UserContext); 
             /************* Esquema del login  *****************************/
         const loginSchema = Yup.object().shape(
             {
@@ -24,7 +28,7 @@ const LoginForm = () => {
                 email: '',
                 password: ''
             }
-
+            const {navigate} = useNavigate();
     return (
         <div>
                         <Formik
@@ -33,11 +37,20 @@ const LoginForm = () => {
                 // *** Yup Validation Schema ***
                 validationSchema = {loginSchema}
                 // ** onSubmit Event
-                onSubmit={ (values) => {
+                onSubmit={async (values) => {
+                    await new Promise((r) => setTimeout(r, 1000));
+                    //console.log(credential.user.email)
+                    //console.log(values.password)
+                    if ( credential.user.email !== values.user && credential.user.password !== values.password ){
+                        alert('Ups! comprueba tus credenciales!' + JSON.stringify(values, null, 2));
+                        navigate.push(<LoginPage/>);
+                    }
+                    else{
+                        alert('Te has loguedo correctamente ' );
+                        navigate.push(<Dashboard/>) ;                  
+                    }
 
-                     alert(JSON.stringify(values,null, 2)) ;
-                    
-                }}>
+                    }}>
 
                 
                 {/* We obtain props from Formik */}
@@ -48,7 +61,7 @@ const LoginForm = () => {
                     isSubmitting,
                     handleSubmit}) => (
                         
-                        <form onSubmit={handleSubmit }>    
+                        <form onSubmit={handleSubmit}>    
                         <VStack spacing={3} align={'center'} maxW="1660px" mx="auto">
                             <Box >
                             
