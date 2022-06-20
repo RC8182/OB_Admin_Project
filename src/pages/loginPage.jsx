@@ -25,7 +25,7 @@ const LoginPage = () => {
                             <br/>
                             
                             <Box boxSize='100px' >
-                                <Image src={LogoIcono} alt='Dan Abramov'  />
+                                <Image src={LogoIcono} alt='OB Icon'  />
                             </Box>
                             <br/>
                             <br/>

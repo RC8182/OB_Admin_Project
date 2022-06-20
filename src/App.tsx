@@ -1,8 +1,9 @@
 
 import React from 'react';
-import { BrowserRouter,
+/*import { BrowserRouter,
   Route,
-  Routes } from 'react-router-dom';
+  Switch } from 'react-router-dom';*/
+  import {Route, BrowserRouter,Routes} from 'react-router-dom';
 import { ChakraProvider } from '@chakra-ui/react'
 import HomePage from './Pages/homePage';
 import LoginPage from './Pages/loginPage';
@@ -15,6 +16,7 @@ import { UserProvider } from './Shared/Context/userContex';
 
 
 function App() {
+
 
 
 
@@ -33,6 +35,7 @@ function App() {
           <Route path='*' element={<NotFound/>} />
 
         </Routes>
+
       
       </BrowserRouter>
       </UserProvider>

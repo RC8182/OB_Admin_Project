@@ -4,15 +4,16 @@ import { Formik,  ErrorMessage, Field } from 'formik';
 import * as Yup from 'yup';
 import {  useNavigate } from 'react-router-dom';
 import UserContext from '../../Shared/Context/userContex';
-import Dashboard from '../dashboardPage';
-import LoginPage from '../loginPage';
+
+
 
 
 
 const LoginForm = () => {
 
         const credential = useContext(UserContext); 
-            /************* Esquema del login  *****************************/
+
+    /************* Esquema del login  *****************************/
         const loginSchema = Yup.object().shape(
             {
                 email: Yup.string()
@@ -22,13 +23,18 @@ const LoginForm = () => {
                         .required('Password is required')
             }
         );
-        /**************************************************** */
+    /************************************************************/
 
             const initialCredentials = {
                 email: '',
                 password: ''
             }
-            const {navigate} = useNavigate();
+            const navigate = useNavigate();
+            
+            const login = ()=>{
+               return navigate('/dashboard')
+            };
+
     return (
         <div>
                         <Formik
@@ -43,11 +49,12 @@ const LoginForm = () => {
                     //console.log(values.password)
                     if ( credential.user.email !== values.user && credential.user.password !== values.password ){
                         alert('Ups! comprueba tus credenciales!' + JSON.stringify(values, null, 2));
-                        navigate.push(<LoginPage/>);
+
+                      
                     }
                     else{
-                        alert('Te has loguedo correctamente ' );
-                        navigate.push(<Dashboard/>) ;                  
+                      
+                        login() ;                  
                     }
 
                     }}>
